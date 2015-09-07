@@ -9,7 +9,7 @@ body {
 strong { font-weight: 700; }
 
 a, a:hover, a:focus {
-	color: #42bfc2;
+	color: #002244;
 	text-decoration: none;
     -o-transition: all .3s;
     -moz-transition: all .3s;
@@ -79,7 +79,7 @@ img { max-width: 100%; }
 
 .section-description-icon {
 	font-size: 56px;
-    color: #42bfc2;
+    color: #002244;
     line-height: 56px;
 }
 .section-container-full-bg .section-description-icon { color: #fff; }
@@ -100,8 +100,8 @@ img { max-width: 100%; }
 	display: inline-block;
 	height: 52px;
 	padding: 15px 40px 0 40px;
-	background: #42bfc2;
-    border: 1px solid #42bfc2;
+	background: #69BE28;
+    border: 1px solid #69BE28;
     font-family: 'Montserrat', sans-serif;
 	font-size: 18px;
     font-weight: 400;
@@ -112,7 +112,7 @@ img { max-width: 100%; }
 	-webkit-border-radius: 30px;
 	border-radius: 30px;
 }
-.big-link-1:hover, .big-link-1:focus, .big-link-1:active, .big-link-1:active:focus { background: none; color: #42bfc2; }
+.big-link-1:hover, .big-link-1:focus, .big-link-1:active, .big-link-1:active:focus { background: none; color: #002244; }
 
 .big-link-2 {
 	background: #aaa;
@@ -122,9 +122,9 @@ img { max-width: 100%; }
 .big-link-2:hover, .big-link-2:focus, .big-link-2:active, .big-link-2:active:focus { background: none; color: #aaa; }
 
 .big-link-3 {
-	background: #fff;
-	border-color: #fff;
-	color: #42bfc2;
+	background: #69BE28;
+	border-color: #69BE28;
+	color: #002244;
 }
 .big-link-3:hover, .big-link-3:focus, .big-link-3:active, .big-link-3:active:focus { background: none; color: #fff; }
 
@@ -145,7 +145,7 @@ nav {
 	left: 0;
 	width: 100%;
 	z-index: 998;
-	background: #42bfc2;
+	background: #002244;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
 	color: #fff;
@@ -178,7 +178,7 @@ nav a:focus { color: #fff; }
 	width: 46px;
 	height: 48px;
 	padding-top: 11px;
-	background: #42bfc2;
+	background: #002244;
 	font-size: 21px;
 	color: #fff;
 	-moz-border-radius: 4px;
@@ -249,7 +249,7 @@ nav a:focus { color: #fff; }
 /***** Features *****/
 
 .features-container {
-	background: #42bfc2;
+	background: #002244;
 }
 
 .features-box {
@@ -276,7 +276,7 @@ nav a:focus { color: #fff; }
     background: #fff;
     border: 1px solid #fff;
     font-size: 56px;
-    color: #42bfc2;
+    color: #69BE28;
     -moz-border-radius: 61px;
     -webkit-border-radius: 61px;
     border-radius: 61px;
@@ -287,7 +287,7 @@ nav a:focus { color: #fff; }
     transition: all .3s;
 }
 
-.features-box .features-box-icon:hover { background: none; border: 1px solid #fff; }
+.features-box .features-box-icon:hover { background: #69BE28; border: 1px solid #fff; }
 .features-box .features-box-icon:hover i { color: #fff; }
 
 
@@ -317,13 +317,13 @@ nav a:focus { color: #fff; }
 	height: 18px;
 	margin: 0 7px;
 	background: none;
-	border: 2px solid #42bfc2;
+	border: 2px solid #002244;
 	-moz-border-radius: 12px;
     -webkit-border-radius: 12px;
     border-radius: 12px;
     cursor: pointer;
 }
-.screenshots-nav span.screenshots-nav-item-active { background: #42bfc2; }
+.screenshots-nav span.screenshots-nav-item-active { background: #002244; }
 
 .screenshots-box-text {
 	margin-top: 40px;
@@ -342,7 +342,7 @@ nav a:focus { color: #fff; }
     -webkit-border-radius: 40px;
     border-radius: 40px;
     font-size: 50px;
-    color: #aaa;
+    color: #69BE28;
     line-height: 50px;
     text-align: center;
 }
@@ -379,7 +379,7 @@ nav a:focus { color: #fff; }
 	padding: 0 0 10px 0;
 	font-size: 30px;
     font-weight: 300;
-    color: #42bfc2;
+    color: #002244;
     line-height: 34px;
 }
 .section-container-full-bg .screenshots-box-text h3 { color: #fff; }
@@ -406,7 +406,7 @@ nav a:focus { color: #fff; }
 /***** Call to action *****/
 
 .call-to-action-container {
-	background: #42bfc2;
+	background: #002244;
 }
 
 .call-to-action-buttons {
@@ -513,7 +513,7 @@ nav a:focus { color: #fff; }
 /***** Subscription form *****/
 
 .subscribe-container {
-	background: #42bfc2;
+	background: #002244;
 }
 
 .subscribe form {
@@ -573,11 +573,11 @@ nav a:focus { color: #fff; }
 .contact-form form button { width: 700px; }
 
 .contact-form form .contact-error {
-	border: 2px solid #42bfc2;
+	border: 2px solid #002244;
 }
 
 .contact-form form textarea.contact-error {
-	border: 2px solid #42bfc2;
+	border: 2px solid #002244;
 }
 
 

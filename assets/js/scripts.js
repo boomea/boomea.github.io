@@ -131,7 +131,7 @@ jQuery(document).ready(function() {
 	    var postdata = $('.contact-form form').serialize();
 	    $.ajax({
 	        type: 'POST',
-	        url: 'assets/contact.php',
+	        url: 'https://signlup.wufoo.com/forms/w19wi16v1hfiwc6/#public',
 	        data: postdata,
 	        dataType: 'json',
 	        success: function(json) {

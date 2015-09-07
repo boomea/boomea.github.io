@@ -92,67 +92,12 @@ jQuery(document).ready(function() {
 	*/
 	$('.success-message').hide();
 	$('.error-message').hide();
-	
-	$('.subscribe form').submit(function(e) {
-		e.preventDefault();
-	    var postdata = $('.subscribe form').serialize();
-	    $.ajax({
-	        type: 'POST',
-	        url: 'assets/subscribe.php',
-	        data: postdata,
-	        dataType: 'json',
-	        success: function(json) {
-	            if(json.valid == 0) {
-	                $('.success-message').hide();
-	                $('.error-message').hide();
-	                $('.error-message').html(json.message);
-	                $('.error-message').fadeIn();
-	            }
-	            else {
-	                $('.error-message').hide();
-	                $('.success-message').hide();
-	                $('.subscribe form').hide();
-	                $('.success-message').html(json.message);
-	                $('.success-message').fadeIn();
-	            }
-	        }
-	    });
-	});
-	
+
 	/*
 	    Contact form
 	*/
 	$('.contact-form form input[type="text"], .contact-form form textarea').on('focus', function() {
 		$('.contact-form form input[type="text"], .contact-form form textarea').removeClass('contact-error');
-	});
-	$('.contact-form form').submit(function(e) {
-		e.preventDefault();
-	    $('.contact-form form input[type="text"], .contact-form form textarea').removeClass('contact-error');
-	    var postdata = $('.contact-form form').serialize();
-	    $.ajax({
-	        type: 'POST',
-	        url: 'https://signlup.wufoo.com/forms/w19wi16v1hfiwc6/#public',
-	        data: postdata,
-	        dataType: 'json',
-	        success: function(json) {
-	            if(json.emailMessage != '') {
-	                $('.contact-form form .contact-email').addClass('contact-error');
-	            }
-	            if(json.subjectMessage != '') {
-	                $('.contact-form form .contact-subject').addClass('contact-error');
-	            }
-	            if(json.messageMessage != '') {
-	                $('.contact-form form textarea').addClass('contact-error');
-	            }
-	            if(json.emailMessage == '' && json.subjectMessage == '' && json.messageMessage == '') {
-	                $('.contact-form form').fadeOut('fast', function() {
-	                    $('.contact-form').append('<p>Thanks for contacting us! We will get back to you very soon.</p>');
-	                    // reload background
-	    				$('.contact-container').backstretch("resize");
-	                });
-	            }
-	        }
-	    });
 	});
     
 });
@@ -172,5 +117,66 @@ jQuery(window).load(function() {
 	*/
 	$(".screenshots-box img").attr("style", "width: auto !important; height: auto !important;");
     
+    ajaxMailChimpForm($(".newsletter-form"), $("#subscribe-result"));
+    // Turn the given MailChimp form into an ajax version of it.
+    // If resultElement is given, the subscribe result is set as html to
+    // that element.
+    function ajaxMailChimpForm($form, $resultElement){
+        // Hijack the submission. We'll submit the form manually.
+        $form.submit(function(e) {
+            e.preventDefault();
+            if (!isValidEmail($form)) {
+                var error =  "A valid email address must be provided.";
+                $resultElement.html(error);
+                $resultElement.css("color", "red");
+            } else {
+                $resultElement.css("color", "inherit");
+                $resultElement.html("Subscribing...");
+                submitSubscribeForm($form, $resultElement);
+            }
+        });
+    }
+    // Validate the email address in the form
+    function isValidEmail($form) {
+        // If email is empty, show error message.
+        // contains just one @
+        var email = $form.find("input[name='EMAIL']").val();
+        if (!email || !email.length) {
+            return false;
+        } else if (email.indexOf("@") == -1) {
+            return false;
+        }
+        return true;
+    }
+    // Submit the form with an ajax/jsonp request.
+    // Based on http://stackoverflow.com/a/15120409/215821
+    function submitSubscribeForm($form, $resultElement) {
+        $.ajax({
+            type: "GET",
+            url: $form.attr("action"),
+            data: $form.serialize(),
+            cache: false,
+            dataType: "jsonp",
+            jsonp: "c", // trigger MailChimp to return a JSONP response
+            contentType: "application/json; charset=utf-8",
+            error: function(error){
+                // According to jquery docs, this is never called for cross-domain JSONP requests
+            },
+            success: function(data){
+                if (data.result != "success") {
+                    var message = data.msg || "Sorry. Unable to subscribe. Please try again later.";
+                    $resultElement.css("color", "red");
+                    if (data.msg && data.msg.indexOf("already subscribed") >= 0) {
+                        message = "You're already subscribed. Thank you.";
+                        $resultElement.css("color", "inherit");
+                    }
+                    $resultElement.html(message);
+                } else {
+                    $resultElement.css("color", "inherit");
+                    $resultElement.html("Thank you!<br>To recieve your gift, you must confirm the subscription in your inbox.");
+                }
+            }
+        });
+    }
 });
 
